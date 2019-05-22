@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import Plataformas from './Plataformas.vue'
 import Planos from './Planos.vue'
+import DadosPessoais from './DadosPessoais.vue'
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
@@ -20,6 +21,11 @@ const router = new VueRouter({
         path: '/planos', 
         name: 'planos',
         component: Planos 
+      },
+      { 
+        path: '/dados-pessoais',
+        name: 'dados-pessoais', 
+        component: DadosPessoais 
       }
   	],
 });
