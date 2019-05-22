@@ -2,6 +2,10 @@
     <section class="content-planos">
         <h1 class="content-planos__title">Planos</h1>
         <h2 class="content-planos__subtitle">Escolha o plano que cabe no seu bolso</h2>
+        
+        <div class="loader" v-show="loading">
+            <img src="./assets/loading.gif" alt="Loader em Azul com bolas" />
+        </div>
 
         <swiper :options="swiperOption" class="content-boxes" v-if="planos.length > 3">
             <swiper-slide v-for="(plano, index) in planos" :key="index">
@@ -61,6 +65,7 @@
   			return {
                 plataforma: [],
                 lightbox: false,
+                loading: true,
                 planos: [],
                 aparelho: [],
                 swiperOption: {
@@ -84,6 +89,7 @@
                 this.$http.get(`http://private-59658d-celulardireto2017.apiary-mock.com/planos/${sku}`).then(
                 response => {
                     self.planos = response.body.planos;
+                    self.loading = false;
                 },
                 error => {
                     console.log(error)

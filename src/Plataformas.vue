@@ -2,6 +2,11 @@
 	<section class="content-plataformas">
         <h1 class="content-plataformas__title">Plataformas</h1>
         <h2 class="content-plataformas__subtitle">Escolha a plataforma que melhor lhe serve</h2>
+
+        <div class="loader" v-show="loading">
+            <img src="./assets/loading.gif" alt="Loader em Azul com bolas" />
+        </div>
+
         <div class="content-boxes">
       		<div class="content-boxes__box main-box" v-for="plataforma in plataformas">
                 <h3 class="main-box__title">{{plataforma.nome}}</h3>
@@ -18,6 +23,7 @@
   		data () {
   			return {
   				plataformas: [],
+                loading: true
   			}
   		},
   		methods: {
@@ -27,6 +33,7 @@
         		this.$http.get('http://private-59658d-celulardireto2017.apiary-mock.com/plataformas').then(
          		response => {
            			self.plataformas = response.body.plataformas;
+                    self.loading = false;
          		},
          		error => {
            			console.log(error)
