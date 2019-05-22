@@ -6,7 +6,7 @@
       		<div class="content-boxes__box main-box" v-for="plataforma in plataformas">
                 <h3 class="main-box__title">{{plataforma.nome}}</h3>
                 <p class="main-box__description">{{plataforma.descricao}}</p>
-      			<router-link :to="{ name: 'planos', params: {sku: plataforma.sku } }" @click.native="addStorage(plataforma.sku)" class="main-box__link">Planos</router-link>
+      			<router-link :to="{ name: 'planos', params: {plataforma: plataforma } }" @click.native="addStorage(plataforma)" class="main-box__link">Planos</router-link>
       		</div>
         </div>
   	</section>
@@ -32,8 +32,8 @@
            			console.log(error)
          		})
        		},
-       		addStorage(sku) {
-  				localStorage.setItem("sku-plataforma", sku);
+       		addStorage(plataforma) {
+  				localStorage.setItem("plataforma", JSON.stringify(plataforma));
   			}
   		},
      	created() {
@@ -51,7 +51,7 @@ $corPrincipal: #007aff;
     align-items: center;
     flex-flow: column;
     width: 1024px;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     
     &__title{

@@ -9,7 +9,7 @@
                     <h3 class="main-box__title">Plano de {{plano.franquia}}</h3>
                     <span class="main-box__value"><small>R$</small>{{plano.valor}}</span>
                     <a href="#" class="main-box__aparelho" v-if="plano.aparelho" @click.prevent="loadAparelho(plano.aparelho)">Informação de aparelho</a>
-                    <router-link :to="{ name: 'dados-pessoais', params: {plataforma: sku, plano: plano} }" @click.native="addStorage(plano)" class="main-box__link">Assine Agora!</router-link>
+                    <router-link :to="{ name: 'dados-pessoais', params: {plataforma: plataforma, plano: plano} }" @click.native="addStorage(plano)" class="main-box__link">Assine Agora!</router-link>
                 </div>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
@@ -22,7 +22,7 @@
                 <h3 class="main-box__title">Plano de {{plano.franquia}}</h3>
                 <span class="main-box__value"><small>R$</small>{{plano.valor}}</span>
                 <a href="#" class="main-box__aparelho" v-if="plano.aparelho" @click.prevent="loadAparelho(plano.aparelho)">Informação de aparelho</a>
-                <router-link :to="{ name: 'dados-pessoais', params: {plataforma: sku, plano: plano} }" @click.native="addStorage(plano)" class="main-box__link">Assine Agora!</router-link>
+                <router-link :to="{ name: 'dados-pessoais', params: {plataforma: plataforma, plano: plano} }" @click.native="addStorage(plano)" class="main-box__link">Assine Agora!</router-link>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
   		name: 'planos',
   		data () {
   			return {
-                sku: '',
+                plataforma: [],
                 lightbox: false,
                 planos: [],
                 aparelho: [],
@@ -90,7 +90,7 @@
                 })
             },
             addStorage(plano) {
-                localStorage.setItem("plano", plano);
+                localStorage.setItem("plano", JSON.stringify(plano));
             },
             loadAparelho(aparelho){
                 this.lightbox = true;
@@ -98,8 +98,8 @@
             }
   		},
         created() {
-            this.sku = (typeof this.$route.params.sku !== "undefined") ? this.$route.params.sku : localStorage.getItem("sku-plataforma");
-            this.loadPlanos(this.sku);
+            this.plataforma = (typeof this.$route.params.plataforma !== "undefined") ? this.$route.params.plataforma : JSON.parse(localStorage.getItem("plataforma"));
+            this.loadPlanos(this.plataforma.sku);
 
             new Swiper('.swiper-container', {
               slidesPerView: 3,
@@ -122,7 +122,7 @@ $corPrincipal: #007aff;
     align-items: center;
     flex-flow: column;
     width: 1024px;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     
     &__title{
