@@ -1,12 +1,12 @@
 <template>
-	<section class="content-planos">
-        <h1 class="content-planos__title">Plataformas</h1>
-        <h2 class="content-planos__subtitle">Escolha a plataforma que melhor lhe serve</h2>
+	<section class="content-plataformas">
+        <h1 class="content-plataformas__title">Plataformas</h1>
+        <h2 class="content-plataformas__subtitle">Escolha a plataforma que melhor lhe serve</h2>
         <div class="content-boxes">
       		<div class="content-boxes__box main-box" v-for="plataforma in plataformas">
                 <h3 class="main-box__title">{{plataforma.nome}}</h3>
                 <p class="main-box__description">{{plataforma.descricao}}</p>
-      			<router-link :to="{ name: 'planos', params: {sku: plataforma.sku } }" @click.native="addStorage(plataforma.sku)" class="main-box__link">Adicionar!</router-link>
+      			<router-link :to="{ name: 'planos', params: {sku: plataforma.sku } }" @click.native="addStorage(plataforma.sku)" class="main-box__link">Planos</router-link>
       		</div>
         </div>
   	</section>
@@ -43,9 +43,9 @@
 </script>
 
 <style lang="scss">
-$vermelho: #d7321e;
+$corPrincipal: #007aff;
 
-.content-planos{
+.content-plataformas{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ $vermelho: #d7321e;
     margin: 0 auto;
     
     &__title{
-        color: $vermelho;
+        color: $corPrincipal;
         font-size: 25px;
         font-weight: 700;
         text-transform: uppercase;
@@ -80,7 +80,7 @@ $vermelho: #d7321e;
     &__box{
         width: 250px;
         margin: 0px 15px;
-        border-top: 2px solid $vermelho;
+        border-top: 2px solid $corPrincipal;
         padding: 15px;
         background-color: #fff;
         transition: all .3s linear;
@@ -103,11 +103,12 @@ $vermelho: #d7321e;
     &__link{
         font-weight: 700;
         outline: none;
-        border: 2px solid $vermelho;
-        display: inline-block;
+        border: 2px solid $corPrincipal;
+        display: block;
+        text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color: $vermelho;
+        background-color: $corPrincipal;
         padding: 10px;
         text-transform: uppercase;
         font-size: 14px;
@@ -115,7 +116,7 @@ $vermelho: #d7321e;
         transition: all .3s linear;
 
         &:hover{
-            color: $vermelho;
+            color: $corPrincipal;
             background-color: transparent;
         }
     }
