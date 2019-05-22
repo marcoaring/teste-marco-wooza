@@ -12,26 +12,14 @@ Vue.use(VueResource)
 const router = new VueRouter({
 	mode: 'history',
   	routes: [
-  		{ 
-    		path: '/', 
-    		name: 'home',
-    		component: Plataformas 
-    	},
-      { 
-        path: '/planos', 
-        name: 'planos',
-        component: Planos 
-      },
-      { 
-        path: '/dados-pessoais',
-        name: 'dados-pessoais', 
-        component: DadosPessoais 
-      }
+        { path: '/', name: 'home', component: Plataformas },
+        { path: '/planos', name: 'planos', component: Planos },
+        { path: '/dados-pessoais', name: 'dados-pessoais', component: DadosPessoais }
   	],
 });
 
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App)
+    el: '#app',
+    router,
+    render: h => h(App)
 })
