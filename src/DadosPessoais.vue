@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    import swal from 'sweetalert'
     import {IMaskDirective} from 'vue-imask';
 	export default {
         directives: { imask: IMaskDirective },
@@ -65,6 +66,23 @@
   		},
   		methods: {
             sendForm() {
+                swal({
+                    title: "Confirmação de dados!",
+                    text: "Olá " + this.nomeInput + ", gostaríamos de confirmar que você escolheu a plataforma '" + this.plataforma.nome + "' com o plano de " + this.plano.franquia + " no valor de R$" + this.plano.valor + ". É isso mesmo?",
+                    icon: "warning",
+                    buttons: true,
+                    buttons: ["Cancelar Assinatura", "Confirmar Assinatura"],
+                })
+                .then((success) => {
+                    if (success) {
+                        swal("Parabéns! Sua assinatura foi realizada com sucesso.", {
+                            icon: "success",
+                        });
+                    } else {
+                        swal.close();
+                    }
+                });
+                console.clear();
                 console.log('PLATAFORMA: ' + this.plataforma.nome);
                 console.log('DESCRIÇÃO DA PLATAFORMA: ' + this.plataforma.descricao);
                 console.log('FRANQUIA DO PLANO: ' + this.plano.franquia);
