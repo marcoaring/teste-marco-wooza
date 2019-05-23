@@ -69,6 +69,16 @@
                     navigation: {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev'
+                    },
+                    breakpoints: {
+                        // when window width is <= 426px
+                        426: {
+                            slidesPerView: 1,
+                            height: 'auto'
+                        },
+                        769: {
+                            slidesPerView: 2
+                        }
                     }
                 }
   			}
@@ -163,6 +173,12 @@ $corPrincipal: #007aff;
             color:#fff;
             background-color: $corPrincipal;
         }
+    }
+
+    @media screen and (max-width: 426px) {
+        &__container{ width: 80vw; }
+
+        &__close{ right: 10vw; }
     }
 }
 </style>

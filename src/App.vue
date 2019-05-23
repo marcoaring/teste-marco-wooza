@@ -34,6 +34,7 @@ body{
 	        font-size: 25px;
 	        font-weight: 700;
 	        text-transform: uppercase;
+	        text-align: center;
 	        margin-top: 0px;
 	        margin-bottom: 5px;
 	    }
@@ -44,13 +45,49 @@ body{
 	        font-weight: 700;
 	        margin-top: 0px;
 	        margin-bottom: 30px;
+	        text-align: center;
 	    }
+
+	    &__form{
+	        width: 40%;
+	        padding: 30px;
+	        background-color: #fff;
+	        border-radius: 8px;
+	        margin-bottom: 30px;
+	    }
+
+	    @media screen and (max-width: 426px) {
+			width: calc(100% - 30px);
+			padding: 30px 15px;
+
+			&__form{
+				width: calc(100% - 30px);
+				padding: 15px;
+			}
+		}
+
+		@media screen and (min-width: 427px) and (max-width: 769px) {
+			width: 600px;
+
+			&__form{
+				width: calc(80% - 30px);
+				padding: 15px;
+			}
+		}
 	}
 
 	.content-boxes{
 	    display: flex;
 	    justify-content: space-between;
 	    flex-flow: row wrap;
+	    width: 100%;
+
+	    @media screen and (min-width: 427px) and (max-width: 769px) {
+			flex-flow: initial;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 }
 </style>

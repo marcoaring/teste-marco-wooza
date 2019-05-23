@@ -1,8 +1,8 @@
 <template>
-    <section class="content-dados">
-        <h1 class="content-dados__title">Dados Cadastrais</h1>
-        <h2 class="content-dados__subtitle">Informe seus dados para prosseguir com a contratação</h2>
-        <section class="content-dados__form">
+    <section class="main-content">
+        <h1 class="main-content__title">Dados Cadastrais</h1>
+        <h2 class="main-content__subtitle">Informe seus dados para prosseguir com a contratação</h2>
+        <section class="main-content__form">
             <form class="content-form" @submit.prevent="sendForm()">
                 <div class="content-form__block-field">
                     <label for="nome" class="content-form__label">Nome</label>
@@ -112,40 +112,6 @@
 
 <style lang="scss">
 $corPrincipal: #007aff;
-
-.content-dados{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column;
-    width: 1024px;
-    min-height: 100vh;
-    margin: 0 auto;
-    
-    &__title{
-        color: $corPrincipal;
-        font-size: 25px;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-top: 0px;
-        margin-bottom: 5px;
-    }
-
-    &__subtitle{
-        color: #757374;
-        font-size: 18px;
-        font-weight: 700;
-        margin-top: 0px;
-        margin-bottom: 30px;
-    }
-
-    &__form{
-        width: 40%;
-        padding: 30px;
-        background-color: #fff;
-        border-radius: 8px;
-    }
-
     .content-form{
         &__block-field{
             margin-bottom: 20px;
@@ -190,5 +156,14 @@ $corPrincipal: #007aff;
             }
         }
     }
-}
+
+    @media screen and (max-width: 426px) {
+        width: 100%;
+    }
+
+    @media screen and (min-width: 427px) and (max-width: 769px) {
+        width: calc(50% - 30px);
+        flex: 1 0 21%;
+        margin-bottom: 30px;
+    }
 </style>

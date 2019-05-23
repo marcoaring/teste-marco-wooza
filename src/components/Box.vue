@@ -114,5 +114,16 @@ $corPrincipal: #007aff;
     }
 
     &:hover{ box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5); }
+
+    @media screen and (max-width: 426px) {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: 427px) and (max-width: 769px) {
+        width: calc(50% - 30px);
+        flex: 1 0 21%;
+        margin-bottom: 30px;
+    }
 }
 </style>
